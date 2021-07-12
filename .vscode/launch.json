@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "qemu_sim_blp",
+            "program": "./build/qemu-aarch64-virt-bsp/boot/blp.elf",
+            "miDebuggerServerAddress": "localhost:1234",
+            "miDebuggerPath": "/Users/dboals/bin/x-tools/aarch64-none-elf/bin/aarch64-none-elf-gdb",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true,                    
+                }
+            ]
+            
+        },
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "qemu_sim_RTOS",
+            "program": "./build/qemu_sim.elf",
+            "miDebuggerServerAddress": "localhost:1234",
+            "miDebuggerPath": "/Users/dboals/bin/x-tools/aarch64-none-elf/bin/aarch64-none-elf-gdb",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true,                    
+                }
+            ]
+            
+        },
+    ]
+}

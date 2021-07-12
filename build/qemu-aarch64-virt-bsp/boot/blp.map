@@ -1,0 +1,235 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x0000000000000000 0x0000000000010000 xr
+RAM              0x0000000040100000 0x0000000000010000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+secure          0x0000000000000000      0xe18
+ *(.startup)
+ .startup       0x0000000000000000      0xc20 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+                0x0000000000000000                _start
+                0x0000000000000400                El3VectorTable
+ *(.text)
+ .text          0x0000000000000c20        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+ .text          0x0000000000000c20        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+ *(.rodata)
+ *fill*         0x0000000000000c20       0xe0 
+ .rodata        0x0000000000000d00      0x118 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+ *(.data)
+ .data          0x0000000000000e18        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+ .data          0x0000000000000e18        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.iplt           0x0000000000000e18        0x0
+ .iplt          0x0000000000000e18        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+
+.text.getCpuId  0x0000000000000e18       0x1c
+ .text.getCpuId
+                0x0000000000000e18       0x1c /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.text.bootInitSetSysFreq
+                0x0000000000000e34       0x1c
+ .text.bootInitSetSysFreq
+                0x0000000000000e34       0x1c /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.text.initGicCpu
+                0x0000000000000e50       0x34
+ .text.initGicCpu
+                0x0000000000000e50       0x34 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000000e50                initGicCpu
+
+.text.initGicDistributor
+                0x0000000000000e84      0x1c4
+ .text.initGicDistributor
+                0x0000000000000e84      0x1c4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000000e84                initGicDistributor
+
+.text.bootInitSystemPeripheralXlock
+                0x0000000000001048       0x1c
+ .text.bootInitSystemPeripheralXlock
+                0x0000000000001048       0x1c /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001048                bootInitSystemPeripheralXlock
+
+.text.systemInit
+                0x0000000000001064       0x18
+ .text.systemInit
+                0x0000000000001064       0x18 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001064                systemInit
+
+.text.exceptionTableInitEl3
+                0x000000000000107c       0x1c
+ .text.exceptionTableInitEl3
+                0x000000000000107c       0x1c /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x000000000000107c                exceptionTableInitEl3
+
+.text.gicInitEl3
+                0x0000000000001098       0x20
+ .text.gicInitEl3
+                0x0000000000001098       0x20 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001098                gicInitEl3
+
+.text.mmuInitEl3
+                0x00000000000010b8       0x14
+ .text.mmuInitEl3
+                0x00000000000010b8       0x14 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x00000000000010b8                mmuInitEl3
+
+.text.earlyCpuInitEl3
+                0x00000000000010cc       0x24
+ .text.earlyCpuInitEl3
+                0x00000000000010cc       0x24 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x00000000000010cc                earlyCpuInitEl3
+
+.text.lateCpuInitEl3
+                0x00000000000010f0       0x2c
+ .text.lateCpuInitEl3
+                0x00000000000010f0       0x2c /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x00000000000010f0                lateCpuInitEl3
+
+.text.El3CurrentElSP0Sync
+                0x000000000000111c        0x4
+ .text.El3CurrentElSP0Sync
+                0x000000000000111c        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x000000000000111c                El3CurrentElSP0Sync
+
+.text.El3CurrentElSP0IRQ
+                0x0000000000001120        0x4
+ .text.El3CurrentElSP0IRQ
+                0x0000000000001120        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001120                El3CurrentElSP0IRQ
+
+.text.El3CurrentElSP0FIQ
+                0x0000000000001124        0x4
+ .text.El3CurrentElSP0FIQ
+                0x0000000000001124        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001124                El3CurrentElSP0FIQ
+
+.text.El3CurrentElSP0SError
+                0x0000000000001128        0x4
+ .text.El3CurrentElSP0SError
+                0x0000000000001128        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001128                El3CurrentElSP0SError
+
+.text.El3CurrentElSPxSync
+                0x000000000000112c        0x4
+ .text.El3CurrentElSPxSync
+                0x000000000000112c        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x000000000000112c                El3CurrentElSPxSync
+
+.text.El3CurrentElSPxIRQ
+                0x0000000000001130        0x4
+ .text.El3CurrentElSPxIRQ
+                0x0000000000001130        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001130                El3CurrentElSPxIRQ
+
+.text.El3CurrentElSPxFIQ
+                0x0000000000001134        0x4
+ .text.El3CurrentElSPxFIQ
+                0x0000000000001134        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001134                El3CurrentElSPxFIQ
+
+.text.El3CurrentElSPxSError
+                0x0000000000001138        0x4
+ .text.El3CurrentElSPxSError
+                0x0000000000001138        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001138                El3CurrentElSPxSError
+
+.text.El3LowerlAarch64Sync
+                0x000000000000113c        0x4
+ .text.El3LowerlAarch64Sync
+                0x000000000000113c        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x000000000000113c                El3LowerlAarch64Sync
+
+.text.El3LowerElAarch64IRQ
+                0x0000000000001140        0x4
+ .text.El3LowerElAarch64IRQ
+                0x0000000000001140        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001140                El3LowerElAarch64IRQ
+
+.text.El3LowerElAarch64FIQ
+                0x0000000000001144        0x4
+ .text.El3LowerElAarch64FIQ
+                0x0000000000001144        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001144                El3LowerElAarch64FIQ
+
+.text.El3LowerElAarch64SError
+                0x0000000000001148        0x4
+ .text.El3LowerElAarch64SError
+                0x0000000000001148        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001148                El3LowerElAarch64SError
+
+.text.El3LowerlAarch32Sync
+                0x000000000000114c        0x4
+ .text.El3LowerlAarch32Sync
+                0x000000000000114c        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x000000000000114c                El3LowerlAarch32Sync
+
+.text.El3LowerElAarch32IRQ
+                0x0000000000001150        0x4
+ .text.El3LowerElAarch32IRQ
+                0x0000000000001150        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001150                El3LowerElAarch32IRQ
+
+.text.El3LowerElAarch32FIQ
+                0x0000000000001154        0x4
+ .text.El3LowerElAarch32FIQ
+                0x0000000000001154        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001154                El3LowerElAarch32FIQ
+
+.text.El3LowerElAarch32SError
+                0x0000000000001158        0x4
+ .text.El3LowerElAarch32SError
+                0x0000000000001158        0x4 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                0x0000000000001158                El3LowerElAarch32SError
+
+.igot.plt       0x0000000000001160        0x0
+ .igot.plt      0x0000000000001160        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+
+.rela.dyn       0x0000000000001160        0x0
+ .rela.iplt     0x0000000000001160        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+
+secureData      0x0000000040100000     0x2000
+ *(.bss)
+ .bss           0x0000000040100000     0x2000 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+ .bss           0x0000000040102000        0x0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+ *(.data)
+LOAD /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+LOAD /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+OUTPUT(/Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/blp.elf elf64-littleaarch64)
+
+.stab           0x0000000000000000      0x8e8
+ .stab          0x0000000000000000      0x8e8 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+
+.stabstr        0x0000000000000000       0xa8
+ .stabstr       0x0000000000000000       0xa8 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/startup.o
+
+.debug_info     0x0000000000000000      0x909
+ .debug_info    0x0000000000000000      0x909 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.debug_abbrev   0x0000000000000000      0x1a7
+ .debug_abbrev  0x0000000000000000      0x1a7 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.debug_aranges  0x0000000000000000      0x1d0
+ .debug_aranges
+                0x0000000000000000      0x1d0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.debug_ranges   0x0000000000000000      0x1c0
+ .debug_ranges  0x0000000000000000      0x1c0 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.debug_line     0x0000000000000000      0x5a5
+ .debug_line    0x0000000000000000      0x5a5 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+
+.debug_str      0x0000000000000000      0x68e
+ .debug_str     0x0000000000000000      0x68e /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                                        0x6b0 (size before relaxing)
+
+.comment        0x0000000000000000       0x21
+ .comment       0x0000000000000000       0x21 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o
+                                         0x22 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0x320
+ .debug_frame   0x0000000000000000      0x320 /Users/dboals/projects/dboals-es-qemu-aarch64-virt/build/qemu-aarch64-virt-bsp/boot/boot.o

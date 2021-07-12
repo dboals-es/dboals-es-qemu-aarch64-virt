@@ -1,0 +1,6 @@
+[submodule "qemu-aarch64-virt-bsp"]
+	path = qemu-aarch64-virt-bsp
+	url = ./qemu-aarch64-virt-bsp/
+[submodule "rtos"]
+	path = rtos
+	url = git@github.com:embeddedsandbox/rtos.git
